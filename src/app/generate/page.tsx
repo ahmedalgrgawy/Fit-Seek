@@ -12,7 +12,7 @@ const GeneratePage = () => {
     const [callActive, setCallActive] = useState(false);
     const [connecting, setConnecting] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState<any[]>([]);
     const [callEnded, setCallEnded] = useState(false);
 
     const { user } = useUser();
@@ -250,6 +250,33 @@ const GeneratePage = () => {
                         </div>
                     </Card>
                 </div>
+
+                {messages.length > 0 && (
+                    <div
+                        ref={messageContainerRef}
+                        className="w-full bg-card/90 backdrop-blur-sm border border-border rounded-xl p-4 mb-8 h-64 overflow-y-auto transition-all duration-300 scroll-smooth"
+                    >
+                        <div className="space-y-3">
+                            {messages.map((msg, index) => (
+                                <div key={index} className="message-item animate-fadeIn">
+                                    <div className="font-semibold text-xs text-muted-foreground mb-1">
+                                        {msg.role === "assistant" ? "CodeFlex AI" : "You"}:
+                                    </div>
+                                    <p className="text-foreground">{msg.content}</p>
+                                </div>
+                            ))}
+
+                            {callEnded && (
+                                <div className="message-item animate-fadeIn">
+                                    <div className="font-semibold text-xs text-primary mb-1">System:</div>
+                                    <p className="text-foreground">
+                                        Your fitness program has been created! Redirecting to your profile...
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
 
                 <div className="flex justify-center gap-4">
                     <Button
