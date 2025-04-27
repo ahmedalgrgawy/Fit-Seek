@@ -34,7 +34,7 @@ export const Navbar = () => {
                             </Link>
 
                             <Link
-                                href="/generate-program"
+                                href="/generate"
                                 className="flex items-center gap-1.5 text-sm hover:text-primary transition-colors"
                             >
                                 <DumbbellIcon size={16} />
