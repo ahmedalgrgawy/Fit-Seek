@@ -62,14 +62,12 @@ const GeneratePage = () => {
     useEffect(() => {
 
         const handleCallStart = () => {
-            console.log("Call started");
             setConnecting(false);
             setCallActive(true);
             setCallEnded(false);
         }
 
         const handleCallEnd = () => {
-            console.log("Call ended");
             setCallActive(false);
             setConnecting(false);
             setIsSpeaking(false);
@@ -77,12 +75,10 @@ const GeneratePage = () => {
         }
 
         const handleSpeechStart = () => {
-            console.log("AI started Speaking");
             setIsSpeaking(true);
         }
 
         const handleSpeechEnd = () => {
-            console.log("AI stopped Speaking");
             setIsSpeaking(false);
         }
 
@@ -198,7 +194,7 @@ const GeneratePage = () => {
                                 </div>
                             </div>
 
-                            <h2 className="text-xl font-bold text-foreground">CodeFlex AI</h2>
+                            <h2 className="text-xl font-bold text-foreground">Fit-Seek</h2>
                             <p className="text-sm text-muted-foreground mt-1">Fitness & Diet Coach</p>
 
                             {/* SPEAKING INDICATOR */}
@@ -260,7 +256,7 @@ const GeneratePage = () => {
                             {messages.map((msg, index) => (
                                 <div key={index} className="message-item animate-fadeIn">
                                     <div className="font-semibold text-xs text-muted-foreground mb-1">
-                                        {msg.role === "assistant" ? "CodeFlex AI" : "You"}:
+                                        {msg.role === "assistant" ? "Fit-Seek" : "You"}:
                                     </div>
                                     <p className="text-foreground">{msg.content}</p>
                                 </div>
