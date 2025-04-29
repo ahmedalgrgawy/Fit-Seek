@@ -14,10 +14,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const ProfilePage = () => {
 
     const { user } = useUser()
-    const userId = user?.id
+    const userId = user?.id || ""
 
     const plans = useQuery(api.plans.getUserPlans, { userId })
-    const [selectedPlan, setSelectedPlan] = useState(null)
+    const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
 
     const activePlan = plans?.find((plan) => plan.isActive)
     const currentPlan = selectedPlan ? plans?.find(plan => plan._id === selectedPlan) : activePlan;
